@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 
@@ -13,7 +14,7 @@ import javax.persistence.OneToMany;
 public class InfoEntityCA {
     
     @Id
-    private int id;
+    private int Infoid;
     private String Email;
     
     
@@ -22,27 +23,34 @@ public class InfoEntityCA {
     
     @OneToMany(mappedBy = "infoEntityCA")
     private List<AdressCA> adressCAs;
+    
+    @OneToOne
+    private PersonCA personCAs;
+   
+ 
+    
+    
    
     public InfoEntityCA(){}
 
     
     public InfoEntityCA(int id, String Email) {
-        this.id = id;
+        this.Infoid = id;
         this.Email = Email;
     }
 
 
     @Override
     public String toString() {
-        return "InfoEntityCA{" + "id=" + id + ", Email=" + Email + '}';
+        return "InfoEntityCA{" + "Infoid=" + Infoid + ", Email=" + Email + '}';
     }
 
     public int getId() {
-        return id;
+        return Infoid;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Infoid = id;
     }
 
     public String getEmail() {

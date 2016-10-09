@@ -15,8 +15,8 @@ public class DBStructure {
         
         puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
         
-        Persistence.generateSchema("caunit", puproperties);
+        Persistence.generateSchema("CA_2", puproperties);
         
-        Persistence.generateSchema("caunit", null);
+        Persistence.generateSchema("CA_2", null);
     }
 }

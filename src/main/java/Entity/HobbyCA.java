@@ -2,13 +2,14 @@ package Entity;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
 public class HobbyCA {
 
-    @Id
+    @Id 
     private String hobbyName;
     private String hobbyDesc;
     
@@ -23,13 +24,17 @@ public class HobbyCA {
         this.hobbyDesc = hobbyDesc;
        
     }
+
     
-
-    @Override
+    
+     @Override
     public String toString() {
-        return "HobbyCA{" + "hobbyName=" + hobbyName + ", hobbyDesc=" + hobbyDesc + '}';
+        return "HobbyCA{, hobbyName=" + hobbyName + ", hobbyDesc=" + hobbyDesc +  '}';
     }
-
+  
+    
+   
+    
     public String getHobbyName() {
         return hobbyName;
     }

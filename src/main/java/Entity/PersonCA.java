@@ -1,16 +1,17 @@
 
 package Entity;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
-public class PersonCA {
+public class PersonCA implements Serializable {
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,23 +25,26 @@ public class PersonCA {
     private List<HobbyCA> hobbyCAs;
     
     
+    @OneToOne(mappedBy = "personCAs")
+   private List<InfoEntityCA> infoEntityCAs;
         
     public PersonCA()
     {
     }
 
-    public PersonCA(String firstName, String lastName)
+    public PersonCA(String firstName, String lastName,List<HobbyCA> hobbies)
     {
         this.firstName = firstName;
         this.lastName = lastName;
-       
+        this.hobbyCAs = hobbies;
     }
 
     @Override
-    public String toString()
-    {
-        return "Person{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + '}';
+    public String toString() {
+        return "PersonCA{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", hobbyCAs=" + hobbyCAs + '}';
     }
+
+   
 
     public int getId()
     {
@@ -66,6 +70,11 @@ public class PersonCA {
     {
         this.lastName = lastName;
     }  
+    
+    public List<InfoEntityCA> addInfoToPerson(InfoEntityCA ps) {
+        this.infoEntityCAs.add(ps);
+        return infoEntityCAs;
+    }
  
 }
 
